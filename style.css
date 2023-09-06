@@ -1,0 +1,441 @@
+:root{
+    --primary-color: #356aff;
+    --bg-color: #f5f5f5;
+    --light-bg-color: #ffffff;
+    --text-color: #111116;
+    --light-text-color: #cdccd1;
+    --primary-text-color: #ffffff;
+    --accent-color: #F26101;
+}
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+}
+
+body{
+    color: var(--text-color);
+    background-color: var(--bg-color);
+}
+
+body.dark{
+    --bg-color: #111116;
+    --light-bg-color: #1c1b20;
+    --text-color: #fff;
+    --light-text-color: #58575c;
+}
+
+/* header */
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+    height: 8vh;
+    background-color: var(--light-bg-color);
+    border-bottom: 1px solid var(--border-color);
+    position: relative;
+}
+  
+.logo {
+    font-family: 'Roboto', sans-serif;
+    font-size: 22px;
+    color: var(--logo-text-color);
+}
+
+.logo-text {
+    font-weight: bold;
+    color: var(--primary-color);
+}
+
+.menu-logo{
+    font-family: 'Roboto', sans-serif;
+    font-size: 22px;
+    color: var(--logo-text-color);
+    margin-bottom: 40px;
+}
+  
+.menu-logo .logo-text {
+    font-weight: bold;
+    color: var(--primary-color);
+}
+  
+.icons {
+    display: flex;
+    gap: 20px;
+}
+  
+.user-icon{
+    display: none;
+}
+
+.user-icon ion-icon, .menu-icon ion-icon{
+    width: 30px;
+    height: 30px;
+    color: var(--logo-text-color);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+  
+.user-icon ion-icon:hover, .menu-icon ion-icon:hover {
+    color: var(--primary-color);
+}
+  
+.header.menu-open {
+    overflow: hidden;
+}
+
+.logo.logo-shifted {
+    transform: translateX(250px); /* Shift icons when menu is open */
+    transition: transform 0.3s ease;
+}
+
+.side-menu {
+    position: fixed;
+    top: 8vh;
+    right: -290px; /* Start outside the viewport */
+    width: 250px;
+    height: 100%;
+    background-color: var(--bg-color); /* Set your desired background color */
+    border-left: 1px solid var(--border-color);
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 20px;
+    transition: right 0.3s ease; /* Add a smooth transition effect */
+    z-index: 1
+}
+
+.side-menu a {
+    color: var(--text-color);
+    text-decoration: none;
+    font-size: 14px;
+    margin-bottom: 15px;
+}
+
+.show {
+    right: 0; /* Slide the menu into the viewport */
+}
+
+
+/* container */
+.translate-wrapper{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 50px;
+}
+
+.container{
+    position: relative;
+    width: 1200px;
+    padding: 0 20px;
+    display: flex;
+    gap: 10px;
+}
+
+.container .card{
+    flex: 1;
+    padding: 30px;
+    border-radius: 20px;
+    background-color: var(--light-bg-color);
+}
+
+.card .from,
+.card .to{
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.card .heading{
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--light-text-color);
+    white-space: nowrap;
+}
+
+.dropdown-container{
+    position: relative;
+    margin-bottom: 10px;
+    width: 100%;
+}
+
+.dropdown-container .dropdown-toggle{
+    display: flex;
+    align-items: center;
+    padding: 15px 20px;
+    border-radius: 30px;
+    background-color: var(--bg-color);
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.dropdown-container .dropdown-toggle span{
+    flex: 1;
+    margin-left: 10px;
+}
+
+.dropdown-container .dropdown-toggle ion-icon{
+    font-size: 20px;
+    transition: transform 0.3s ease
+}
+
+.dropdown-container.active .dropdown-toggle{
+    border-radius: 20px 20px 0 0;
+}
+
+.dropdown-container .dropdown-menu{
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    height: 300px;
+    overflow: auto;
+    display: none;
+    padding: 20px;
+    z-index: 1;
+    list-style: none;
+    flex-direction: column;
+    background-color: var(--bg-color);
+    transition: all 0.3s;
+    border-radius: 0 0 20px 20px;
+}
+
+.dropdown-container .dropdown-menu::-webkit-scrollbar{
+    display: none;
+}
+
+.dropdown-container.active .dropdown-menu{
+    display: flex;
+}
+
+.dropdown-container.active .dropdown-menu li{
+    padding: 10px 20px;
+    border-radius: 20px;
+    cursor: pointer;
+    margin-bottom: 5px;
+    border-bottom: 1px solid var(--light-bg-color);
+    transition: all 0.3s;
+}
+
+.dropdown-container.active .dropdown-menu li.active{
+    color: var(--primary-text-color);
+    background-color: var(--primary-color);
+}
+
+.dropdown-container.active .dropdown-menu li:not(.active):hover{
+    background-color: var(--light-bg-color);
+}
+
+.container .text-area{
+    position: relative;
+}
+
+.container textarea{
+    width: 100%;
+    padding: 20px;
+    margin: 10px 0;
+    background-color: transparent;
+    resize: none;
+    outline: none;
+    border: none;
+    color: var(--text-color);
+    font-size: 18px;
+}
+
+.container .text-area .chars{
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    padding: 10px;
+    font-size: 0.8rem;
+    color: var(--light-text-color);
+}
+
+.card-bottom{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    padding-top: 20px;
+    border-top: 2px solid var(--bg-color);
+}
+
+.card-bottom p{
+    margin-bottom: 20px;
+}
+
+.card-bottom label{
+    height: 50px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    padding: 0 20px;
+    cursor: pointer;
+    border-radius: 30px;
+    background-color: var(--bg-color);
+}
+
+.card-bottom label:hover{
+    color: var(--primary-text-color);
+    background-color: var(--accent-color);
+}
+
+.card-bottom span{
+    font-size: 12px;
+    pointer-events: none;
+}
+
+.card-bottom ion-icon{
+    font-size: 20px;
+}
+
+.card-bottom button{
+    height: 50px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    padding: 0 20px;
+    border-radius: 30px;
+    border: none;
+    outline: none;
+    color: var(--text-color);
+    cursor: pointer;
+    background-color: var(--bg-color);
+}
+
+.card-bottom button:hover{
+    color: var(--primary-text-color);
+    background-color: var(--accent-color);
+}
+
+.container .center{
+    position: relative;
+}
+
+.swap-position{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    top: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    cursor: pointer;
+    border: 5px solid var(--bg-color);
+    transition: all 0.3s;
+    color: var(--primary-text-color);
+    background-color: var(--primary-color);
+}
+
+.swap-position ion-icon{
+    font-size: 25px;
+}
+
+.swap-position:hover{
+    transform: translateX(-50%) scale(1.1);
+}
+
+.mode{
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 1;
+}
+
+.toggle{
+    position: relative;
+    cursor: pointer;
+}
+
+.toggle-track{
+    width: 24px;
+    height: 50px;
+    border-radius: 30px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    padding: 3px 0;
+    justify-content: space-between;
+    border: 1px solid var(--light-text-color);
+    background-color: var(--light-bg-color);
+    transition: all 0.3s ease;
+}
+
+.toggle-checkbox{
+    display: none;
+}
+
+.toggle-thumb{
+    position: absolute;
+    top: 2px;
+    left: 2px;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background-color: var(--primary-color);
+    transition: all 0.5s;
+}
+
+.toggle input:checked ~ .toggle-thumb{
+    transform: translateY(25px);
+}
+
+.toggle ion-icon{
+    font-size: 20px;
+}
+
+
+@media (max-width: 800px) {
+
+    .translate-wrapper{
+        margin-top: 10px;
+        margin-bottom: 10px;
+    }
+    
+    .container{
+        width: 100%;
+        margin-top: 20px;
+        flex-direction: column;
+    }
+
+    .container .card{
+        width: 100%;
+    }
+
+    .container .card .from{
+        margin-right: 0;
+    }
+
+    .container .card .to{
+        margin-left: 0;
+    }
+
+    .container .card .from,
+    .container .card .to{
+        flex-direction: column;
+    }
+
+    .swap-position{
+        top: 50%;
+        left: 50%;
+        transform: translate(-50% , -50%);
+    }
+
+    .swap-position:hover{
+        transform: translate(-50% , -50%) scale(1.1);
+    }
+
+    .swap-position ion-icon{
+        transform: rotate(90deg);
+    }
+}
